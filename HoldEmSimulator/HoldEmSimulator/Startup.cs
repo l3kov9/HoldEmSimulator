@@ -1,5 +1,6 @@
 namespace HoldEmSimulator
 {
+    using DAL;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -18,6 +19,7 @@ namespace HoldEmSimulator
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<HoldEmDbContext>();
 
             services.AddControllersWithViews();
 
