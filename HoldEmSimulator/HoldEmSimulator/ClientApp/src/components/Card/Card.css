@@ -1,0 +1,43 @@
+  .grid-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-gap: 5px;
+    background-color: white;
+    color: black;
+    font-size: 0.9em;
+    padding: 10px;
+    border-radius: 5%;
+    box-shadow: 0px 5px 15px grey;
+    background-size: 100%;
+    background-size: cover;
+  }
+
+  .grid-item > div {
+    max-height: 40px;
+    overflow: hidden;
+  }
+  
+  .red-suit {
+    text-align: center;
+    align-self: center;
+    font-size: 2em;
+    color: red;
+  }
+
+  .black-suit {
+    text-align: center;
+    align-self: center;
+    font-size: 2em;
+    color: black;
+  }
+  
+  .top-left {
+    padding: 0.1em;
+  }
+  
+  .bottom-right {
+    align-self: end;
+    transform: rotate(180deg);
+  }
+  
