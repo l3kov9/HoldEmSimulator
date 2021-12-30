@@ -6,11 +6,22 @@ import './Table.css';
 const calculateProbability = async (ev) => {
     ev.preventDefault();
 
-    let element = document.getElementById("probability");
-    element.innerHTML = "0 %";
+    const myCards = [...document.querySelectorAll('div.grid-my-cards > div.grid-item')]
+        .map(x =>
+            [...new Set(x.innerText.replaceAll('\n', ''))]
+                .join(''));
 
-    const response = await fetch('oddsprobability');
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ myCards: myCards })
+    }
+
+    const response = await fetch('oddsprobability', requestOptions);
     const data = await response.json();
+
+    let element = document.getElementById("probability");
+    element.innerHTML = `${data} %`;
 }
 
 const Table = () => {
@@ -30,7 +41,7 @@ const Table = () => {
                 </div>
             </div>
 
-            <div className="grid-container">
+            <div className="grid-my-cards">
                 <Card rank={CardMapper[GetRandomInt(13)]} suit={SuitMapper[GetRandomInt(4)]} />
                 <Card rank={CardMapper[GetRandomInt(13)]} suit={SuitMapper[GetRandomInt(4)]} />
             </div>

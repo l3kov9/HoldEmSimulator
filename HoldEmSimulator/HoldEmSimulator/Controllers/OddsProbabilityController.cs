@@ -7,10 +7,15 @@
     [Route("[controller]")]
     public class OddsProbabilityController : ControllerBase
     {
-        [HttpGet]
-        public double Get()
+        [HttpPost]
+        public double Post(MyClass my)
         {
             return 14.7;
+        }
+
+        public class MyClass
+        {
+            public IEnumerable<string> MyCards { get; set; }
         }
     }
 }
