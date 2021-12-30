@@ -14,7 +14,7 @@ class Card extends Component {
 
     render() {
         return (
-            <div className="grid-item" style={{backgroundImage: this.props.isEmpty ? `url(${Background})` : "none"}}>
+            <div className="grid-item" style={{ backgroundImage: this.props.isEmpty ? `url(${Background})` : "none" }}>
                 <div className="top-left">{this.props.rank}<br />
                     <span style={{ color: this.state.color }}>{this.props.suit}</span>
                 </div>
