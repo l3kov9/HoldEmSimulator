@@ -1,21 +1,27 @@
 ﻿namespace HoldEmSimulator.Controllers
 {
+    using BL.Contracts;
+    using DAL.DTOs;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
-    
+    using System.Threading.Tasks;
+
     [ApiController]
     [Route("[controller]")]
     public class OddsProbabilityController : ControllerBase
     {
-        [HttpPost]
-        public double Post(MyClass my)
+        private readonly IOddsService _oddsService;
+
+        public OddsProbabilityController(IOddsService oddsService)
         {
-            return 14.7;
+            _oddsService = oddsService;
         }
 
-        public class MyClass
+        [HttpPost]
+        public async Task<double> Post(PotDto pot)
         {
-            public IEnumerable<string> MyCards { get; set; }
+            var probability = await _oddsService.CalculateProbability(pot);
+
+            return probability;
         }
     }
 }

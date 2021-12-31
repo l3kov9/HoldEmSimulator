@@ -6,15 +6,22 @@ import './Table.css';
 const calculateProbability = async (ev) => {
     ev.preventDefault();
 
-    const myCards = [...document.querySelectorAll('div.grid-my-cards > div.grid-item')]
+    const hand = [...document.querySelectorAll('div.grid-my-cards > div.grid-item')]
         .map(x =>
             [...new Set(x.innerText.replaceAll('\n', ''))]
-                .join(''));
+                .join(''))
+        .map(x => JSON.parse(`{"rank": "${x.substring(0, x.length - 1)}", "suit": "${x.slice(x.length - 1)}"}`));
+
+    const boardCards = [...document.querySelectorAll('div.grid-container > div.grid-item')]
+        .map(x =>
+            [...new Set(x.innerText.replaceAll('\n', ''))]
+                .join(''))
+        .map(x => JSON.parse(`{"rank": "${x.substring(0, x.length - 1)}", "suit": "${x.slice(x.length - 1)}"}`));
 
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ myCards: myCards })
+        body: JSON.stringify({ hand: hand, boardCards: boardCards, totalPlayers: "3" })
     }
 
     const response = await fetch('oddsprobability', requestOptions);
