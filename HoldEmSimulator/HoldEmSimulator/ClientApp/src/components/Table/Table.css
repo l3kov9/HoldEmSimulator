@@ -3,55 +3,78 @@
     grid-template-columns: repeat(5, 120px);
     grid-gap: 3em;
     justify-content: left;
-  }
+}
 
-  .main {
+.grid-my-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 120px);
+    grid-gap: 3em;
+    justify-content: left;
+}
+
+.main {
     width: 1000px;
-  }
-  
-  .table {
+}
+
+.table {
     background-color: green;
     height: 500px;
     width: 100%;
     border-radius: 50%;
     margin: 0 auto;
     border: 1em solid black;
-  }
-  
-  .board {
+}
+
+.board {
     position: relative;
     top: 29%;
     left: 10%;
-  }
-  .card-small {
+}
+
+.card-small {
     border: .2em solid black;
     border-radius: 10%;
     height: 80px;
-    width: 56px; /*70% of height*/
+    width: 56px;
+    /*70% of height*/
     margin-right: 5px;
     float: left;
     background-color: white;
-   }
-  
-  .card-text {
+}
+
+.card-text {
     margin: 0;
     margin-top: 15%;
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
     padding: 0;
-  }
-  
-  .card-img {
+}
+
+.card-img {
     text-align: center;
     margin: 0;
     font-size: 2em;
-  }
-  
-  .red {
+}
+
+.red {
     color: red;
-  }
-  
-  .black {
+}
+
+.black {
     color: black;
-  }
+}
+
+#probability{
+    margin-left: 15px;
+}
+
+#total-players{
+    width: 20%;
+    margin-left: 40%;
+}
+
+#validation-message{
+    color: red;
+    font-size: 90%;
+}

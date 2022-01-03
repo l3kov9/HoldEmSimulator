@@ -1,3 +1,7 @@
+using System.Net.Http;
+using HoldEmSimulator.BL;
+using HoldEmSimulator.BL.Contracts;
+
 namespace HoldEmSimulator
 {
     using DAL;
@@ -20,6 +24,7 @@ namespace HoldEmSimulator
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HoldEmDbContext>();
+            services.AddTransient<IOddsService, OddsService>();
 
             services.AddControllersWithViews();
 
