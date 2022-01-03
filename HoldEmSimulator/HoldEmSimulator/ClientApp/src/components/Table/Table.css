@@ -68,3 +68,13 @@
 #probability{
     margin-left: 15px;
 }
+
+#total-players{
+    width: 20%;
+    margin-left: 40%;
+}
+
+#validation-message{
+    color: red;
+    font-size: 90%;
+}

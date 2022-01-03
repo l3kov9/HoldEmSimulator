@@ -5,6 +5,6 @@
 
     public interface IOddsService
     {
-        Task<double> CalculateProbability(PotDto pot);
+        double CalculateProbability(PotDto pot);
     }
 }

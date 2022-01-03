@@ -1,9 +1,10 @@
-﻿namespace HoldEmSimulator.Controllers
+﻿using System;
+
+namespace HoldEmSimulator.Controllers
 {
     using BL.Contracts;
     using DAL.DTOs;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     [ApiController]
     [Route("[controller]")]
@@ -17,11 +18,22 @@
         }
 
         [HttpPost]
-        public async Task<double> Post(PotDto pot)
+        public double Post(PotDto pot)
         {
-            var probability = await _oddsService.CalculateProbability(pot);
-
-            return probability;
+            try
+            {
+                return _oddsService.CalculateProbability(pot);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
+
+        [Route("/error")]
+        public IActionResult HandleError() =>
+            Problem();
+
     }
 }
